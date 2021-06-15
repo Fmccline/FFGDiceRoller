@@ -1,5 +1,6 @@
 import tkinter as tk
 from main_view import MainView
+from rolls_view import RollsView
 from profile_helper import ProfileHelper
 
 
@@ -7,10 +8,17 @@ class Application(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        self.main_view = MainView(self)
-        self.main_view.pack(side="top", fill="both", expand=True)
-        self.main_view.grid_rowconfigure(0, weight=1)
-        self.main_view.grid_columnconfigure(0, weight=1)
+        main_view_frame = tk.Frame(self)
+        self.main_view = MainView(main_view_frame)
+        main_view_frame.pack(side="top", fill="both", expand=True)
+
+        rolls_view_frame = tk.Frame(self)
+        self.rolls_view = RollsView(rolls_view_frame)
+        rolls_view_frame.pack(side="bottom", fill="both", expand=True)
+
+        # self.main_view.pack(side="top", fill="both", expand=True)
+        # self.main_view.grid_rowconfigure(0, weight=1)
+        # self.main_view.grid_columnconfigure(0, weight=1)
         self.create_profile_menu()
 
     def create_profile_menu(self):

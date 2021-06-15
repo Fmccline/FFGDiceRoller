@@ -10,6 +10,9 @@ class MainView(tk.Frame):
         super().__init__(master)
         self.master = master
         self.pack()
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
         self.profile_text = tk.StringVar()
         self.create_header()
         self.character_views = []
